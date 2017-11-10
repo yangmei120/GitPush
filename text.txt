@@ -36,10 +36,10 @@ $ git push
 
 
 
-git checkout master
-git merge dev/master
-git checkout dev
-git pull origin master
+git checkout master //可不操作
+git merge dev/master //可不操作
+git checkout dev     //可不操作
+git pull origin master //在自己本地分支进行
 git status
 git add .
 ....
