@@ -33,3 +33,13 @@ $ git checkout master
 $ git merge work
 提交到远程主干
 $ git push
+
+
+
+git checkout master
+git merge dev/master
+git checkout dev
+git pull origin master
+git status
+git add .
+....
