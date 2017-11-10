@@ -13,6 +13,10 @@ Git鼓励大量使用分支：
 删除分支：git branch -d <name>
 
 
+
+
+主分支合并分支
+
 去自己的工作分支
 $ git checkout work
 工作
@@ -35,6 +39,7 @@ $ git merge work
 $ git push
 
 
+从远程仓库主分支上获取最新代码，并合并到本地自己的分支上
 
 git checkout master //可不操作
 git merge dev/master //可不操作
