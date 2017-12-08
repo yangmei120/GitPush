@@ -48,3 +48,20 @@ git pull origin master //在自己本地分支进行
 git status
 git add .
 ....
+
+
+本地文件上传到github
+
+首先需要在github上新建一个空项目，此时将得到项目地址：
+git init  #初始化本地仓库
+git add . 
+git commit -m '' #将文件commit到本地仓库
+git remote add origin https://github.com/username/   #添加远程仓库，origin只是一个远程仓库的别名，可随意
+git push -u origin master  #将本地仓库push远程仓库，并将origin设置为默认远程仓库
+git pull origin master
+
+....
+git opush origin master
+
+
+
