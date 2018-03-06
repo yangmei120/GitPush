@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>center </title>
+    <style>
+        /* .container{
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: #ccc;
+        }
+        .box{
+            position:absolute;
+            top: 50%; 
+            left:50%;
+            transform: translateY(-50%);
+            transform: translateX(-50%);
+        } */
+        .container{
+            position:fixed;
+            top:0;
+            bottom:0;
+            left:0;
+            right:0;
+            background: #ccc;
+            text-align: center;
+
+        }
+        .container:before{            
+            content:'';            
+            display:inline-block;            
+            vertical-align:middle;            
+            height:100%;
+        }
+        .container .box{          
+            display:inline-block;            
+            vertical-align:middle;            
+            /* width:60px;            
+            height:60px;            
+            line-height:60px;    */         
+            color:rgb(241, 30, 30);            
+            background:yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <p>sdfsdafhkjsdfjlksdjflklshdf</p>
+            <p>sdfsdafhkjsdfjlksdjflklshdf</p>
+            <p>sdfsdafhkjsdfjlksdjflklshdf</p>
+            <p>sdfsdafhkjsdfjlksdjflklshdf</p>
+        </div>
+        <div class="content"></div>  
+    </div>
+</body>
+</html>
+<script src="jquery2.1.js"></script>
+<script>
+    console.log(jQuery)
+    var json = {
+            code : '000',
+            data : [
+                {
+                    join:[
+                        {
+                            classId:1,
+                            className:"小二班",
+                            icon:'',
+                            name:'张大宝'
+                        },
+                        {
+                            classId: 2,
+                            className: "小二班",
+                            icon: '',
+                            name: '小青蛙'
+                        },
+                        {
+                            classId: 3,
+                            className: "小一班",
+                            icon: '',
+                            name: '王婷'
+                        }
+                    ],
+                },
+                {
+                    join: [
+                        {
+                            classId: 4,
+                            className: "大二班",
+                            icon: '',
+                            name: '斯蒂芬'
+                        },
+                        {
+                            classId: 5,
+                            className: "大二班",
+                            icon: '',
+                            name: '桑德'
+                        },
+                        {
+                            classId: 6,
+                            className: "小三班",
+                            icon: '',
+                            name: '字典'
+                        }
+                    ]
+                }
+            ]
+        }
+    var arr = json.data;
+    $("div").addClass("name");
+    //console.log(json.data);
+    for (var i = 0; i < arr.length; i++) {
+        var obj = arr[i],
+            join = obj.join,
+            res = {};
+            //console.log(join);
+        for(var j = 0; j < join.length; j++) {
+            var person = join[j],
+                name = person.className;
+            if(name in res) {
+                res[name].push(person);
+                //console.log(res);
+            } else {
+                res[name] = [];
+                res[name].push(person);
+            }
+            obj.res = res
+        }  
+    }
+    //console.log(arr);
+
+
+
+
+    var ajax1 = {
+            "personname": "冯真",
+            "nation": "汉族",
+            "workdate": "2017-10-01",
+            "sex": "男"
+        };
+    var ajax2 = [
+            {
+                "propField": "PERSONNAME",
+                "propFieldDesc": "姓名"
+            },
+            {
+                "propField": "NATION",
+                "propFieldDesc": "民族"
+            },
+            {
+                "propField": "SEX",
+                "propFieldDesc": "性别"
+            },
+            {
+                "propField": "WORKDATE",
+                "propFieldDesc": "工作时间"
+            }
+        ]
+    var str = '';
+    //var obj = eval(ajax2);
+    console.log(ajax2.length)
+    for(var i = 0; i < ajax2.length; i++) {
+        var obj = ajax2[i],
+            name = obj.propField.toLocaleLowerCase(),
+            propFieldDesc = obj.propFieldDesc;
+        //console.log(propFieldDesc,name);
+       
+        $.each(ajax1, function (k, v) {
+            if (name == k) {
+                k = propFieldDesc;
+                //console.log(propFieldDesc);
+                str = "<p class='renderInfo halfBlock'>" + k + ":" + v + "</p>";
+                $(str).appendTo($(".box"))
+            } 
+        })
+   
+    }  
+
+
+
+    /* var hhh = [
+        {
+            "name":"xiaoming",
+            "age":29
+        },
+        {
+            "rr":"lining",
+            "uj":32
+        }
+    ];
+    for(var j = 0;j < hhh.length; j++) {
+        for(var m in hhh[j]){
+            //console.log(m);
+            if(m == 'name'){
+                console.log(hhh[j].age);
+            }
+        }
+    } */
+</script>

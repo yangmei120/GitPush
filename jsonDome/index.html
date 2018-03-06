@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="info"></div>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+		var strUrl = "./json/key.json",
+			getUrl = './json/val.json',
+			ajaxArr = [];
+		$.ajax({
+            contentType: 'application/json',
+			dataType:'JSON',
+			url: strUrl,
+			success: function(data){
+				ajaxArr.push(data);
+			}
+		});
+		$.ajax({
+			contentType: 'application/json',
+			dataType: "JSON",
+			async: true,
+			url: getUrl,
+			success: function (res) {
+				ajaxArr.push(res);
+				var keyObj = ajaxArr[0],
+					valObj = ajaxArr[1];
+				for(var i = 0; i < keyObj.length; i++) {
+			        var obj = keyObj[i],
+			            name = obj.propField.toLocaleLowerCase(),
+			            propFieldDesc = obj.propFieldDesc;
+			       
+			        $.each(valObj, function (k, v) {
+			            if (name == k) {
+			                k = propFieldDesc;
+			                str = "<p class='renderInfo halfBlock'>" + k + ":" + v + "</p>";
+			                //$(str).appendTo($(".info"))
+			                $(".info").append(str);
+			                
+			            } 
+			        })
+			   
+			    }
+			}
+		});
+	</script>
+</body>
+</html>

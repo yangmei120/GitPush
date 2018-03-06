@@ -1,0 +1,18 @@
+[
+    {
+        "propField": "PERSONNAME",
+        "propFieldDesc": "姓名"
+    },
+    {
+        "propField": "NATION",
+        "propFieldDesc": "民族"
+    },
+    {
+        "propField": "SEX",
+        "propFieldDesc": "性别"
+    },
+    {
+        "propField": "WORKDATE",
+        "propFieldDesc": "工作时间"
+    }
+]
