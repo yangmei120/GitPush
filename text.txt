@@ -65,8 +65,37 @@ git opush origin master
 
 
 /***************************/
+https://blog.csdn.net/u011510825/article/details/50260759
 git 回滚
 git log //查看日至
 git reset --hard 【merge前的版本号】
 
+一、撤销提交
+每个人都会犯错，提交代码时犯错怎么办呢？一不小心提交了错误代码，想要撤销？有人会说再次提交覆盖就好了，这是比较低级的做法，因为你的主管会看到你的两次提交，并会觉得你好low。。。。。。
 
+git如此强大，当然有撤销提交版本操作
+
+首先，用git log 查看提交错误的commit 
+
+然后； git revert commit （比如：fa042ce57ebbe5bb9c8db709f719cec2c58ee7ff）撤销指定的版本，撤销也会作为一次提交进行保存。
+
+最后： git push
+
+当然如果你错误发生时间较早，你还可以这样
+
+git revert HEAD                  撤销前一次 commit
+git revert HEAD^               撤销前前一次 commit
+
+二、相信大家都做过这个操作，就是本地做了修改后，不想提交，想恢复如初。或者你合并代码时，发现很多冲突，这些冲突又是其他开发者引起的，你解决不了，你想恢复如初。
+
+有两种方法：
+
+1）
+
+git add .
+git reset --hard
+
+2）
+
+git stash
+git stash drop
